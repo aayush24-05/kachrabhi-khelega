@@ -44,7 +44,6 @@ gap:30px;
 
 nav ul li{
 cursor:pointer;
-font-weight:500;
 }
 
 nav button{
@@ -59,7 +58,7 @@ cursor:pointer;
 /* HERO */
 
 .hero{
-height:85vh;
+height:80vh;
 display:flex;
 align-items:center;
 justify-content:space-between;
@@ -71,14 +70,9 @@ max-width:500px;
 }
 
 .hero-text h2{
-font-size:50px;
-color:#1b4332;
+font-size:48px;
 margin-bottom:20px;
-}
-
-.hero-text p{
-margin-bottom:30px;
-color:#555;
+color:#1b4332;
 }
 
 .hero-text button{
@@ -87,13 +81,7 @@ background:#40916c;
 border:none;
 color:white;
 border-radius:30px;
-font-size:16px;
 cursor:pointer;
-}
-
-.hero img{
-width:450px;
-border-radius:20px;
 }
 
 /* PRODUCTS */
@@ -104,8 +92,7 @@ text-align:center;
 }
 
 .products h2{
-font-size:36px;
-margin-bottom:50px;
+margin-bottom:40px;
 color:#1b4332;
 }
 
@@ -124,57 +111,25 @@ transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-8px);
+transform:scale(1.05);
 }
 
-.card img{
-width:100%;
-border-radius:10px;
-margin-bottom:15px;
-}
-
-.card h3{
-margin-bottom:5px;
-}
-
-.price{
-color:#2d6a4f;
-font-weight:600;
-}
-
-/* ABOUT */
-
-.about{
-display:flex;
-align-items:center;
-gap:60px;
-padding:80px 8%;
-background:#e9f5ec;
-}
-
-.about img{
-width:400px;
+.card button{
+margin-top:10px;
+padding:8px 15px;
+border:none;
+background:#2d6a4f;
+color:white;
 border-radius:20px;
+cursor:pointer;
 }
-
-.about-text h2{
-margin-bottom:20px;
-color:#1b4332;
-}
-
-.about-text p{
-color:#555;
-line-height:1.6;
-}
-
-/* FOOTER */
 
 footer{
 background:#1b4332;
 color:white;
 text-align:center;
 padding:25px;
-margin-top:40px;
+margin-top:50px;
 }
 
 </style>
@@ -185,95 +140,147 @@ margin-top:40px;
 <!-- NAVBAR -->
 
 <nav>
+
 <h1>Bonsai Haven 🌿</h1>
 
 <ul>
-<li>Home</li>
-<li>Shop</li>
-<li>Care Guide</li>
-<li>About</li>
+<li onclick="scrollToSection('home')">Home</li>
+<li onclick="scrollToSection('shop')">Shop</li>
+<li onclick="showCareGuide()">Care Guide</li>
+<li onclick="showAbout()">About</li>
 </ul>
 
-<button>Contact</button>
+<button onclick="contactAlert()">Contact</button>
+
 </nav>
+
 
 <!-- HERO -->
 
-<section class="hero">
+<section class="hero" id="home">
 
 <div class="hero-text">
-<h2>Bring Nature Into Your Home</h2>
-<p>
-Discover beautiful handcrafted bonsai trees that bring calm,
-balance, and elegance to your space.
-</p>
 
-<button>Shop Bonsai</button>
+<h2>Bring Nature Into Your Home</h2>
+
+<p>Beautiful handcrafted bonsai trees that bring peace and balance.</p>
+
+<br>
+
+<button onclick="scrollToSection('shop')">Shop Bonsai</button>
+
 </div>
 
-<img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
+<img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6" width="400">
+
 </section>
+
 
 <!-- PRODUCTS -->
 
-<section class="products">
+<section class="products" id="shop">
 
 <h2>Featured Bonsai</h2>
 
 <div class="product-grid">
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1598899134739-24c46f58c8d7">
+
+<img src="https://images.unsplash.com/photo-1598899134739-24c46f58c8d7" width="100%">
+
 <h3>Juniper Bonsai</h3>
-<p class="price">₹2,499</p>
+
+<p>₹2499</p>
+
+<button onclick="addToCart('Juniper Bonsai')">Add to Cart</button>
+
 </div>
 
+
 <div class="card">
-<img src="https://images.unsplash.com/photo-1603899122634-f086ca5f5ddd">
+
+<img src="https://images.unsplash.com/photo-1603899122634-f086ca5f5ddd" width="100%">
+
 <h3>Ficus Bonsai</h3>
-<p class="price">₹1,999</p>
+
+<p>₹1999</p>
+
+<button onclick="addToCart('Ficus Bonsai')">Add to Cart</button>
+
 </div>
 
+
 <div class="card">
-<img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033">
+
+<img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033" width="100%">
+
 <h3>Chinese Elm</h3>
-<p class="price">₹2,299</p>
-</div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f">
-<h3>Japanese Maple</h3>
-<p class="price">₹3,499</p>
-</div>
+<p>₹2299</p>
+
+<button onclick="addToCart('Chinese Elm')">Add to Cart</button>
 
 </div>
 
-</section>
-
-<!-- ABOUT -->
-
-<section class="about">
-
-<img src="https://images.unsplash.com/photo-1597318181409-cf64c0dfcbb6">
-
-<div class="about-text">
-<h2>About Bonsai Haven</h2>
-
-<p>
-At Bonsai Haven, we cultivate premium bonsai trees grown with patience and care.
-Each tree is a living piece of art designed to bring peace and beauty into your home.
-Whether you are a beginner or an enthusiast, we provide guidance to help your bonsai thrive.
-</p>
 
 </div>
 
 </section>
 
-<!-- FOOTER -->
 
 <footer>
-<p>© 2026 Bonsai Haven | Grow Peace 🌿</p>
+
+<p>© 2026 Bonsai Haven 🌿</p>
+
 </footer>
+
+
+<script>
+
+/* Scroll Event */
+
+function scrollToSection(section){
+
+document.getElementById(section).scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+/* Add To Cart Event */
+
+function addToCart(product){
+
+alert(product + " added to cart 🌿");
+
+}
+
+/* Contact Button Event */
+
+function contactAlert(){
+
+alert("Contact us at: bonsaihaven@email.com");
+
+}
+
+/* Care Guide Event */
+
+function showCareGuide(){
+
+alert("💧 Water every 2 days\n☀ Keep in sunlight\n✂ Trim regularly");
+
+}
+
+/* About Event */
+
+function showAbout(){
+
+alert("Bonsai Haven grows premium bonsai trees for nature lovers.");
+
+}
+
+</script>
+
 
 </body>
 </html>
