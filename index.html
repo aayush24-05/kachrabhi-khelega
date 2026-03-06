@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Bonsai Haven</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XXXXXXXXXX');
+</script>
 
 <style>
 
@@ -30,6 +41,8 @@ align-items:center;
 padding:20px 8%;
 background:white;
 box-shadow:0 2px 10px rgba(0,0,0,0.05);
+position:sticky;
+top:0;
 }
 
 nav h1{
@@ -44,6 +57,7 @@ gap:30px;
 
 nav ul li{
 cursor:pointer;
+font-weight:500;
 }
 
 nav button{
@@ -58,7 +72,7 @@ cursor:pointer;
 /* HERO */
 
 .hero{
-height:80vh;
+height:85vh;
 display:flex;
 align-items:center;
 justify-content:space-between;
@@ -75,6 +89,10 @@ margin-bottom:20px;
 color:#1b4332;
 }
 
+.hero-text p{
+margin-bottom:25px;
+}
+
 .hero-text button{
 padding:14px 28px;
 background:#40916c;
@@ -82,6 +100,12 @@ border:none;
 color:white;
 border-radius:30px;
 cursor:pointer;
+font-size:16px;
+}
+
+.hero img{
+width:420px;
+border-radius:20px;
 }
 
 /* PRODUCTS */
@@ -114,9 +138,14 @@ transition:0.3s;
 transform:scale(1.05);
 }
 
+.card img{
+width:100%;
+border-radius:10px;
+}
+
 .card button{
 margin-top:10px;
-padding:8px 15px;
+padding:8px 16px;
 border:none;
 background:#2d6a4f;
 color:white;
@@ -124,15 +153,38 @@ border-radius:20px;
 cursor:pointer;
 }
 
+/* ABOUT */
+
+.about{
+display:flex;
+align-items:center;
+gap:60px;
+padding:80px 8%;
+background:#e9f5ec;
+}
+
+.about img{
+width:380px;
+border-radius:20px;
+}
+
+.about-text h2{
+margin-bottom:20px;
+color:#1b4332;
+}
+
+/* FOOTER */
+
 footer{
 background:#1b4332;
 color:white;
 text-align:center;
 padding:25px;
-margin-top:50px;
+margin-top:40px;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -147,7 +199,7 @@ margin-top:50px;
 <li onclick="scrollToSection('home')">Home</li>
 <li onclick="scrollToSection('shop')">Shop</li>
 <li onclick="showCareGuide()">Care Guide</li>
-<li onclick="showAbout()">About</li>
+<li onclick="scrollToSection('about')">About</li>
 </ul>
 
 <button onclick="contactAlert()">Contact</button>
@@ -163,15 +215,18 @@ margin-top:50px;
 
 <h2>Bring Nature Into Your Home</h2>
 
-<p>Beautiful handcrafted bonsai trees that bring peace and balance.</p>
+<p>
+Discover beautiful handcrafted bonsai trees that bring calm,
+balance and elegance to your space.
+</p>
 
-<br>
-
-<button onclick="scrollToSection('shop')">Shop Bonsai</button>
+<button onclick="scrollToSection('shop')">
+Shop Bonsai
+</button>
 
 </div>
 
-<img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6" width="400">
+<img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
 
 </section>
 
@@ -186,47 +241,75 @@ margin-top:50px;
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1598899134739-24c46f58c8d7" width="100%">
+<img src="https://images.unsplash.com/photo-1598899134739-24c46f58c8d7">
 
 <h3>Juniper Bonsai</h3>
 
 <p>₹2499</p>
 
-<button onclick="addToCart('Juniper Bonsai')">Add to Cart</button>
+<button onclick="addToCart('Juniper Bonsai')">
+Add to Cart
+</button>
 
 </div>
 
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1603899122634-f086ca5f5ddd" width="100%">
+<img src="https://images.unsplash.com/photo-1603899122634-f086ca5f5ddd">
 
 <h3>Ficus Bonsai</h3>
 
 <p>₹1999</p>
 
-<button onclick="addToCart('Ficus Bonsai')">Add to Cart</button>
+<button onclick="addToCart('Ficus Bonsai')">
+Add to Cart
+</button>
 
 </div>
 
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033" width="100%">
+<img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033">
 
 <h3>Chinese Elm</h3>
 
 <p>₹2299</p>
 
-<button onclick="addToCart('Chinese Elm')">Add to Cart</button>
+<button onclick="addToCart('Chinese Elm')">
+Add to Cart
+</button>
 
 </div>
-
 
 </div>
 
 </section>
 
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+<img src="https://images.unsplash.com/photo-1597318181409-cf64c0dfcbb6">
+
+<div class="about-text">
+
+<h2>About Bonsai Haven</h2>
+
+<p>
+At Bonsai Haven we grow premium bonsai trees with patience and care.
+Each tree is a living artwork designed to bring peace and nature into your home.
+Whether you are a beginner or an enthusiast, we guide you on how to care for your bonsai.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
 
 <footer>
 
@@ -237,12 +320,16 @@ margin-top:50px;
 
 <script>
 
-/* Scroll Event */
+/* Smooth Scroll */
 
 function scrollToSection(section){
 
 document.getElementById(section).scrollIntoView({
 behavior:"smooth"
+});
+
+gtag('event','navigation_click',{
+section:section
 });
 
 }
@@ -253,29 +340,29 @@ function addToCart(product){
 
 alert(product + " added to cart 🌿");
 
+gtag('event','add_to_cart',{
+item_name:product
+});
+
 }
 
-/* Contact Button Event */
+/* Contact */
 
 function contactAlert(){
 
 alert("Contact us at: bonsaihaven@email.com");
 
+gtag('event','contact_click');
+
 }
 
-/* Care Guide Event */
+/* Care Guide */
 
 function showCareGuide(){
 
 alert("💧 Water every 2 days\n☀ Keep in sunlight\n✂ Trim regularly");
 
-}
-
-/* About Event */
-
-function showAbout(){
-
-alert("Bonsai Haven grows premium bonsai trees for nature lovers.");
+gtag('event','care_guide_view');
 
 }
 
