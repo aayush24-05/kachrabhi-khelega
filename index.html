@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BONSAI | Premium Bonsai Plants</title>
 
+
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0FT0GFNR85"></script>
 <script>
@@ -13,6 +14,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-0FT0GFNR85');
 </script>
+
 
 <!-- Microsoft Clarity Script -->
 <script type="text/javascript">
@@ -25,10 +27,12 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 
 
 <style>
+
 body{
-font-family: Arial;
+font-family:Arial;
 margin:0;
-background:#f3f7f3;
+background:#f4f7f4;
+color:#333;
 }
 
 header{
@@ -36,23 +40,73 @@ background:#1f3d2b;
 color:white;
 padding:20px;
 text-align:center;
+position:relative;
+}
+
+nav{
+background:#2f5d3a;
+padding:10px;
+text-align:center;
+}
+
+nav a{
+color:white;
+margin:0 15px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.cart{
+position:absolute;
+right:20px;
+top:25px;
+}
+
+.hero{
+background:url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6");
+background-size:cover;
+background-position:center;
+color:white;
+text-align:center;
+padding:100px 20px;
+}
+
+section{
+padding:50px 20px;
+text-align:center;
+}
+
+.catalogue{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+max-width:900px;
+margin:auto;
+}
+
+.catalogue img{
+width:100%;
+border-radius:10px;
 }
 
 .products{
 display:flex;
 justify-content:center;
 gap:20px;
-padding:40px;
 flex-wrap:wrap;
 }
 
 .card{
 background:white;
 padding:20px;
+width:250px;
 border-radius:10px;
 box-shadow:0 4px 10px rgba(0,0,0,0.1);
-width:250px;
-text-align:center;
+}
+
+.card img{
+width:100%;
+border-radius:8px;
 }
 
 button{
@@ -62,9 +116,23 @@ border:none;
 padding:10px 15px;
 border-radius:5px;
 cursor:pointer;
+margin-top:8px;
 }
 
-#paymentBox{
+.about{
+max-width:800px;
+margin:auto;
+line-height:1.6;
+}
+
+footer{
+background:#1f3d2b;
+color:white;
+text-align:center;
+padding:15px;
+}
+
+.popup{
 display:none;
 position:fixed;
 top:50%;
@@ -74,52 +142,137 @@ background:white;
 padding:30px;
 border-radius:10px;
 box-shadow:0 10px 20px rgba(0,0,0,0.3);
-text-align:center;
 }
 
 input{
 padding:10px;
-width:80%;
 margin:10px;
+width:80%;
 }
 
-#result{
-font-weight:bold;
-margin-top:10px;
-}
 </style>
 </head>
 
 <body>
 
 <header>
+
 <h1>BONSAI 🌿</h1>
 <p>Premium Bonsai Plants</p>
+
+<div class="cart">
+🛒 Cart: <span id="cartCount">0</span>
+<button onclick="openCart()">View</button>
+</div>
+
 </header>
 
-<section class="products">
+<nav>
+<a href="#">Home</a>
+<a href="#catalogue">Catalogue</a>
+<a href="#shop">Shop</a>
+<a href="#about">About</a>
+</nav>
 
-<div class="card">
-<h3>Ficus Bonsai</h3>
-<p>₹1499</p>
-<button onclick="openPayment()">Buy</button>
-</div>
+<section class="hero">
+<h1>Bring Nature Into Your Home</h1>
+<p>Luxury miniature trees crafted by nature</p>
+</section>
 
-<div class="card">
-<h3>Juniper Bonsai</h3>
-<p>₹2299</p>
-<button onclick="openPayment()">Buy</button>
-</div>
+<section id="catalogue">
 
-<div class="card">
-<h3>Japanese Maple Bonsai</h3>
-<p>₹1999</p>
-<button onclick="openPayment()">Buy</button>
+<h2>Bonsai Catalogue</h2>
+
+<div class="catalogue">
+
+<img src="https://images.unsplash.com/photo-1592155931584-901ac15763e3">
+<img src="https://images.unsplash.com/photo-1616627987475-8c1c515dddf3">
+<img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924">
+<img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
+
 </div>
 
 </section>
 
-<div id="paymentBox">
+<section id="shop">
+
+<h2>Shop Bonsai</h2>
+
+<div class="products">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1592155931584-901ac15763e3">
+<h3>Ficus Bonsai</h3>
+<p>₹1499</p>
+<button onclick="addToCart('Ficus Bonsai',1499)">Add To Cart</button>
+<button onclick="openPayment()">Buy Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924">
+<h3>Juniper Bonsai</h3>
+<p>₹2299</p>
+<button onclick="addToCart('Juniper Bonsai',2299)">Add To Cart</button>
+<button onclick="openPayment()">Buy Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1616627987475-8c1c515dddf3">
+<h3>Japanese Maple</h3>
+<p>₹1999</p>
+<button onclick="addToCart('Japanese Maple',1999)">Add To Cart</button>
+<button onclick="openPayment()">Buy Now</button>
+</div>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<h2>About BONSAI</h2>
+
+<div class="about">
+
+<p>
+BONSAI is a premium bonsai plant shop dedicated to bringing the beauty of miniature trees into modern homes and offices.
+</p>
+
+<p>
+Each bonsai is carefully grown and shaped to reflect harmony between nature and design.
+</p>
+
+<p>
+We believe plants are living art that create calm and balance in everyday life.
+</p>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 BONSAI Plant Shop
+</footer>
+
+<!-- CART POPUP -->
+
+<div class="popup" id="cartBox">
+
+<h2>Your Cart</h2>
+
+<ul id="cartItems"></ul>
+
+<p>Total: ₹<span id="cartTotal">0</span></p>
+
+<button onclick="checkout()">Checkout</button>
+<button onclick="closeCart()">Close</button>
+
+</div>
+
+<!-- PAYMENT POPUP -->
+
+<div class="popup" id="paymentBox">
+
 <h2>Dummy Payment</h2>
 
 <input type="text" id="cardNumber" placeholder="Enter Card Number">
@@ -135,32 +288,109 @@ margin-top:10px;
 
 <script>
 
+let cart=[]
+let total=0
+
+function addToCart(name,price){
+
+cart.push({name,price})
+total+=price
+
+document.getElementById("cartCount").innerText=cart.length
+
+updateCart()
+
+gtag('event','add_to_cart',{
+item_name:name,
+value:price,
+currency:'INR'
+})
+
+}
+
+function updateCart(){
+
+let list=document.getElementById("cartItems")
+list.innerHTML=""
+
+cart.forEach(item=>{
+
+let li=document.createElement("li")
+li.innerText=item.name+" - ₹"+item.price
+list.appendChild(li)
+
+})
+
+document.getElementById("cartTotal").innerText=total
+
+}
+
+function openCart(){
+
+document.getElementById("cartBox").style.display="block"
+
+gtag('event','view_cart')
+
+}
+
+function closeCart(){
+
+document.getElementById("cartBox").style.display="none"
+
+}
+
+function checkout(){
+
+gtag('event','begin_checkout',{
+value:total,
+currency:'INR'
+})
+
+openPayment()
+
+}
+
 function openPayment(){
-document.getElementById("paymentBox").style.display="block";
+
+document.getElementById("paymentBox").style.display="block"
+
 }
 
 function closePayment(){
-document.getElementById("paymentBox").style.display="none";
-document.getElementById("result").innerText="";
+
+document.getElementById("paymentBox").style.display="none"
+document.getElementById("result").innerText=""
+
 }
 
 function processPayment(){
 
-let card=document.getElementById("cardNumber").value.trim();
+let card=document.getElementById("cardNumber").value.trim()
 
-if(card === "1111 1111 1111"){
-document.getElementById("result").style.color="green";
-document.getElementById("result").innerText="✅ Payment Successful!";
+if(card==="1111 1111 1111"){
+
+document.getElementById("result").style.color="green"
+document.getElementById("result").innerText="Payment Successful!"
+
+gtag('event','purchase',{
+value:total,
+currency:'INR'
+})
+
 }
 
-else if(card === "2222222222222"){
-document.getElementById("result").style.color="red";
-document.getElementById("result").innerText="❌ Payment Failed!";
+else if(card==="2222222222222"){
+
+document.getElementById("result").style.color="red"
+document.getElementById("result").innerText="Payment Failed!"
+
 }
 
 else{
-document.getElementById("result").style.color="orange";
-document.getElementById("result").innerText="⚠ Invalid Test Card";
+
+document.getElementById("result").style.color="orange"
+document.getElementById("result").innerText="Invalid Test Card"
+
 }
 
 }
